@@ -8,3 +8,4 @@ variable "token" {
     default = "borislavr"
     sensitive = true
 }
+
