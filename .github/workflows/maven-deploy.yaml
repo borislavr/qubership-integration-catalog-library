@@ -21,12 +21,6 @@ jobs:
           java-version: "21"
           distribution: "temurin"
 
-#      - name: "Configure maven GitHub repository server"
-#        uses: s4u/maven-settings-action@v3.1.0
-#        with:
-#          override: true
-#          repositories: '[{"id":"github","name":"github","url":"https://maven.pkg.github.com/${{ github.repository }}","snapshots":{"enabled":true}}]'
-#          githubServer: true
       - name: Display settings.xml
         run: cat ~/.m2/settings.xml          
       - name: "Maven deploy"
