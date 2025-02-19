@@ -20,12 +20,14 @@ jobs:
         with:
           java-version: "21"
           distribution: "temurin"
-
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
       - name: Display settings.xml
-        run: cat ~/.m2/settings.xml          
+        run: cat ~/.m2/settings.xml         
       - name: "Maven deploy"
         run: |
           mvn --batch-mode deploy -Dgpg.skip=true -DaltDeploymentRepository=github::https://maven.pkg.github.com/${{ github.repository }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USER: ${{ github.actor }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
