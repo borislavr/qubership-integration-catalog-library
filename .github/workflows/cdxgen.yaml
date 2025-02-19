@@ -1,25 +1,22 @@
 ---
 
+# Please provide the project_type as a parameter to the action
+# The project_type can be one of the following:
+# - dockerfile
+# - go
+# - maven
+# - python
+
 name: 'CDXGen'
 on:
-  workflow_dispatch
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
 jobs:
   cdxgen:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checout code"
-        uses: actions/checkout@v4
-        with:
-          path: ${{ github.workspace }}/sources
-      - name: "Generate BOM"
-        run: |
-          cd ${GITHUB_WORKSPACE}/sources
-          docker run --rm -v /tmp:/tmp -v $(pwd):/app:rw -t ghcr.io/cyclonedx/cdxgen:v8.6.0 -r /app -p -o /app/bom.json
-        shell: bash
-      - name: "Upload bom.json"
-        if: "!cancelled()"
-        uses: actions/upload-artifact@v4.6.0
-        with:
-          name: BOM file
-          path: ${{ github.workspace }}/sources/bom.json
-          retention-days: 5
+      - name: "cdxgen"
+        uses: netcracker/qubership-workflow-hub/actions/cdxgen@feature/cdxgen
