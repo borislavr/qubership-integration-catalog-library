@@ -163,7 +163,7 @@ jobs:
 
   docker-build-publish:
     needs: [update-pom-version, tag, check-dockerfile]
-    if: ${{ github.event.inputs.build-docker == 'true' }} && ${{ needs.check-dockerfile.outputs.dockerfile_exists == 'exists' }}
+    if: ${{ github.event.inputs.build-docker == 'true' && needs.check-dockerfile.outputs.dockerfile_exists == 'exists' }}
     uses: netcracker/qubership-workflow-hub/.github/workflows/docker-publish.yml@main
     with:
       ref: ${{ github.event.inputs.version }}
