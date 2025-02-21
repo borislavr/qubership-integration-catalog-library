@@ -155,13 +155,15 @@ jobs:
           if [[ -f Dockerfile ]]; then
             echo "df_exists=exists" >> "$GITHUB_OUTPUT"
           else
-            echo "Dockerfile does not exists. Docker build stage will be skipped"
+            echo "Dockerfile does not exist. Docker build stage will be skipped"
             echo "df_exists=notexists" >> "$GITHUB_OUTPUT"
           fi
+          echo "GITHUB_OUTPUT:"
+          cat "$GITHUB_OUTPUT"
 
   docker-build-publish:
-    if: ${{ github.event.inputs.build-docker == 'true' }} && ${{ needs.check-dockerfile.outputs.dockerfile_exists == 'exists' }}
     needs: [update-pom-version, tag, check-dockerfile]
+    if: ${{ github.event.inputs.build-docker == 'true' }} && ${{ needs.check-dockerfile.outputs.dockerfile_exists == "exists" }}
     uses: netcracker/qubership-workflow-hub/.github/workflows/docker-publish.yml@main
     with:
       ref: ${{ github.event.inputs.version }}
