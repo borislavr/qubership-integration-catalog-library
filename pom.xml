@@ -39,7 +39,7 @@
 
         <!-- Newest versions requires commons-io 2.15! -->
         <!-- TODO update io.kubernetes.client-java before update this library -->
-        <poi.version>5.2.3</poi.version>
+        <poi.version>5.4.0</poi.version>
 
         <handlebars.version>4.3.1</handlebars.version>
         <graphql-java.version>21.5</graphql-java.version>
