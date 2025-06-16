@@ -51,4 +51,4 @@ jobs:
         DEFAULT_BRANCH: ${{ github.event.pull_request.base.ref }}
         # To report GitHub Actions status checks
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        LOG_LEVEL: 'DEBUG'
+        # LOG_LEVEL: 'DEBUG'
