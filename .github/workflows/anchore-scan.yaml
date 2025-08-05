@@ -36,4 +36,4 @@ jobs:
           sarif_file: output.sarif
 
       - name: grype / report / print
-        run: echo "${{ steps.sarif-to-markdow.outputs.markdown }}" >> $GITHUB_STEP_SUMMARY
+        run: cat ${{ runner.temp }}/_github_home/sarif.md >> $GITHUB_STEP_SUMMARY
