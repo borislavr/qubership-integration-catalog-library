@@ -30,3 +30,6 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: ${{ steps.scan-current-project.outputs.sarif }}
+      - name: Show SARIF
+        run: |
+          cat ${{ steps.scan-current-project.outputs.sarif }} >> $GITHUB_STEP_SUMMARY
