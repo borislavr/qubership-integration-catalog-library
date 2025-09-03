@@ -4,7 +4,7 @@
 
     <groupId>org.qubership</groupId>
     <artifactId>qip-catalog-library</artifactId>
-    <version>${revision}</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -18,7 +18,6 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
 
-        <revision>1.0.4</revision>
         <catalog-library.revision>2025.1.1.15</catalog-library.revision>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
